@@ -1,9 +1,7 @@
-module.exports = (router) => {
-	router.get("/starships", (req, res) => {
-		res.send("lista de estrellas");
-	});
+const postStarshipsController = require("../controllers/post-starships.controller");
+const getItemStartshipsController = require("../controllers/get-item-starships.controller");
 
-	router.get("/starships/:id", (req, res) => {
-		res.send("lista de estrellas " + req.params.id);
-	});
+module.exports = (router) => {
+	router.get("/starships", postStarshipsController);
+	router.get("/starships/:id", getItemStartshipsController);
 };
