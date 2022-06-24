@@ -4,15 +4,16 @@ const CONFIG = require("./mysql-config");
 class MySQLHelper {
 	static async insert(sql, lastData) {
 		const response = await MySQLHelper.execute(sql);
+
 		return {
 			id: response.insertId,
 			...lastData
 		};
 	}
 
-	static async execute(sql, params) {
+	static async execute(sql) {
 		const connection = await mysql.createConnection(CONFIG);
-		const [results] = await connection.execute(sql, params);
+		const [results] = await connection.execute(sql);
 		return results;
 	}
 }

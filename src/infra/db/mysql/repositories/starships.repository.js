@@ -1,16 +1,32 @@
 const MySQLHelper = require("../lib/mysql-helper");
 
 module.exports = class StarhipsRepository {
-	static tableName = "starhips";
+	static tableName = "starships";
 
-	async findById(id) {
-		const sql = "SELECT * FROM ? WHERE id = ?";
+	static async findById(id) {
+		const sql = "select * from " + this.tableName + " where id = " + id;
+		const response = await MySQLHelper.execute(sql);
+		return response;
+	}
 
-		const response = await MySQLHelper.execute(sql, [this.tableName, id]);
-		if (response.length === 0) {
-			throw new Error("Couldn't find the starhips");
-		} else {
-			return response[0];
-		}
+	static async create(starship) {
+		const columns = Object.keys(starship)
+			.map((column) => "`" + column + "`")
+			.join(",");
+		const values = Object.values(starship)
+			.map((value) => '"' + value + '"')
+			.join(",");
+		const sql =
+			"INSERT INTO " +
+			this.tableName +
+			" (" +
+			columns +
+			") VALUES (" +
+			values +
+			")";
+		console.log(sql);
+		const response = await MySQLHelper.insert(sql, starship);
+
+		return response;
 	}
 };
