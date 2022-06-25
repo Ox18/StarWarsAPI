@@ -4,7 +4,7 @@ const { join } = require("path");
 
 module.exports = (app) => {
 	const router = Router();
-	app.use("/api", router);
+	app.use("/", router);
 	readdirSync(join(__dirname, "../routes")).map(async (file) => {
 		if (file.endsWith(".js")) {
 			await require(`../routes/${file}`)(router);
