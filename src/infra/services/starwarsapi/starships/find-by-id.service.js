@@ -1,5 +1,4 @@
 const { StarwarsClient } = require("../api");
-const ResourceNotFoundException = require("../../../exceptions/ResourceNotFound.exception");
 
 const findByIdStarshipService = async (id) => {
 	const baseURL = `starships/${id}/`;
