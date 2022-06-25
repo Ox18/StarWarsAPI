@@ -1,11 +1,10 @@
 "use strict";
 
-const StarshipsRepository = require("../infra/db/mysql/repositories/starships.repository");
+const StarshipsRepository = require("./infra/db/mysql/repositories/starships.repository");
 
 module.exports.postStarship = async (event) => {
 	try {
-
-		const body = JSON.parse(event.body)
+		const body = JSON.parse(event.body);
 
 		const { pilotos, peliculas } = body;
 

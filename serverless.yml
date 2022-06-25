@@ -1,28 +1,26 @@
-service: aws-lambda-crud-node
+service: aws-zoluxiones-api
 frameworkVersion: "3"
 
 useDotenv: true
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   region: us-west-2
-  timeout: 5
 
 functions:
   get-starship:
-    handler: src/functions/get-starship.getStarship
+    handler: src/getStarship.getStarship
     events:
       - httpApi:
-          path: /starships/
+          path: /starships
           method: get
   post-starship:
-    handler: src/functions/post-starship.postStarship
+    handler: src/postStarship.postStarship
     events:
       - httpApi:
-          path: /starships/
+          path: /starships
           method: post
 
 plugins:
   - serverless-offline
-  - serverless-event-body-option

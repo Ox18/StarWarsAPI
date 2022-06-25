@@ -1,9 +1,9 @@
 "use strict";
 
-const StarshipsRepository = require("../infra/db/mysql/repositories/starships.repository");
+const StarshipsRepository = require("./infra/db/mysql/repositories/starships.repository");
 const {
 	findByIdStarshipService,
-} = require("../services/starwarsapi/starships/find-by-id.service");
+} = require("./services/starwarsapi/starships/find-by-id.service");
 
 module.exports.getStarship = async (event) => {
 	const id = Number(event.queryStringParameters.id);
