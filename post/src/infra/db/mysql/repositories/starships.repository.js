@@ -18,7 +18,6 @@ module.exports = class StarhipsRepository {
 			") VALUES (" +
 			values +
 			")";
-		console.log(sql);
 		const response = await MySQLHelper.insert(sql, starship);
 
 		return response;
