@@ -1,4 +1,4 @@
-const { response } = require("express");
+
 const StarshipsRepository = require("./src/infra/db/mysql/repositories/starships.repository");
 const {
 	findByIdStarshipService,
